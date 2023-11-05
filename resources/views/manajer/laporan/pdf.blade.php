@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-    <footer class="footer small text-end text-black-50"><div class="container-fluid px-4 px-lg-5">Copyright &copy; Macca - Our Café 2022</div></footer>
+    <footer class="footer small text-end text-black-50"><div class="container-fluid px-4 px-lg-5">Copyright &copy; DU 68 Market - 2023</div></footer>
   </div>
 </body>
 </html>

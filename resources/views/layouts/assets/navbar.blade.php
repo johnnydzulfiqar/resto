@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-  <span class="navbar-brand font-weight-bold" style="font-size: 2.5em">Our Café <img src="{{ asset('assets/img/icon1.png') }}" alt="logo" width="40" height="40"></span>
+  <span class="navbar-brand font-weight-bold" style="font-size: 2.5em">DU 68 Market <img src="{{ asset('assets/img/icon1.png') }}" alt="logo" width="40" height="40"></span>
   <div class="container-fluid py-1 px-3">
     <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
       <div class="ms-md-auto pe-md-3 d-flex align-items-center">

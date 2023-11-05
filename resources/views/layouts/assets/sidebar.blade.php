@@ -3,7 +3,7 @@
     <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href="#">
       {{-- <img src="{{ asset('assets') }}/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
-      <span class="font-weight-bold text-white" style="font-size: 1.5em">Our Café<img src="{{ asset('assets/img/icon1.png') }}" class="navbar-brand-img h-100" alt="main_logo"></span>
+      <span class="font-weight-bold text-white" style="font-size: 1.5em">DU 68 Market<img src="{{ asset('assets/img/icon1.png') }}" class="navbar-brand-img h-100" alt="main_logo"></span>
       {{-- <span class="material-icons navbar-brand-img vh-100 text-white" style="font-size: 1.5em"> --}}
       {{-- </span> --}}
     </a>

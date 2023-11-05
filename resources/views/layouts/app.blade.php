@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
   <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/icon1.png">
   <title>
-    {{ $titlePage }} | Our Café
+    {{ $titlePage }} | DU 68 Market
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -63,7 +63,7 @@
         
                 {{-- @include('layouts.assets.footer') --}}
 
-                <footer class="footer small text-end text-black-50"><div class="container px-4 px-lg-5">Copyright &copy; Macca - Our Café 2022</div></footer>
+                <footer class="footer small text-end text-black-50"><div class="container px-4 px-lg-5">Copyright &copy; DU 68 Market - 2023</div></footer>
             </div>
         </main>
     
