@@ -24,7 +24,7 @@ class TransaksiController extends Controller
     {
         $datas = Transaksi::latest('created_at')->paginate(12);
         return view('kasir.index', compact('datas'))
-        ->with('i', (request()->input('page', 1) -1) * 12);
+            ->with('i', (request()->input('page', 1) - 1) * 12);
     }
 
     /**
@@ -36,7 +36,7 @@ class TransaksiController extends Controller
     {
         $menus = Menu::where('ketersediaan', '>', 0)->get();
         $harga = Menu::get('harga');
-        
+
         return view('kasir.create', compact('menus', 'harga'));
     }
 
@@ -55,13 +55,14 @@ class TransaksiController extends Controller
         $jumlah = $request->jumlah;
         $total_harga = $request->total_harga;
         $peg_id = Auth::user()->id;
-
+        $transaksi_id = now()->format("YmdH_" . rand(9999999, 1000000));
         Transaksi::create([
             'nama_pelanggan' => $nama_pelanggan,
             'menu_id' => $menu_id,
             'jumlah' => $jumlah,
             'total_harga' => $total_harga,
             'pegawai_id' => $peg_id,
+            'transaksi_id' => $transaksi_id,
         ]);
 
         $menu_change = Menu::find($menu_id);
@@ -100,7 +101,7 @@ class TransaksiController extends Controller
         $harga = Menu::get('harga');
 
         $data = Transaksi::find($id);
-        
+
         return view('kasir.edit', compact('menus', 'harga', 'data'));
     }
 
@@ -139,7 +140,7 @@ class TransaksiController extends Controller
             $menu_change->update([
                 'ketersediaan' => $ket_ada_new
             ]);
-            
+
             $menu_change_2 = Menu::find($menu_id);
             $ket_ada = $menu_change_2->ketersediaan;
             $ket_ada_new = $ket_ada - $jumlah_baru;
@@ -148,7 +149,7 @@ class TransaksiController extends Controller
             ]);
         } else {
             $menu_change = Menu::find($menu_id);
-            
+
             $ket_ada = $menu_change->ketersediaan;
 
             $selisih = $jumlah_lama - $jumlah_baru;
