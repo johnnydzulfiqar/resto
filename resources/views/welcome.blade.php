@@ -106,7 +106,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Our Café</a>
+                <a class="navbar-brand" href="#page-top">DU 68 Market</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -115,7 +115,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
                         <li class="nav-item"><a class="nav-link" href="#menus">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#signup">Masuk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.menu.index') }}">List Menu</a></li>
                         @auth()
                             @if(Auth::user()->role == 'admin')
                                 <li class="nav-item"><a class="nav-link" href="{{ route('admin.registration.index') }}">Home</a></li>
@@ -127,6 +127,16 @@
                         @else
                             <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                         @endauth
+                        @auth
+                        <li title="Logout" class="nav-item">
+                          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                            <i class="">Logout</i>
+                         </a>
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -136,7 +146,7 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">Our Café</h1>
+                        <h1 class="mx-auto my-0 text-uppercase">DU 68 Market</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Web Kafe Responsive untuk memanajemen Our Café dengan Mudah.</h2>
                         <a class="btn btn-primary" href="#about">Ayo Mulai</a>
                     </div>
@@ -299,4 +309,5 @@
         <!-- Core theme JS-->
         <script src="{{ asset('js/scripts.js') }}"></script>
     </body>
+  
 </html>
