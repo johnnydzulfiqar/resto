@@ -17,7 +17,8 @@ class RouteController extends Controller
         $total_menu = Menu::all()->count();
 
         $today = now()->format('yy-mm-dd');
-        $AgoDate= now()->subWeek()->format('Y-m-d');
+        // $AgoDate= now()->subWeek()->format('Y-m-d');
+        $AgoDate = now()->subDays()->format('Y-m-d');
         $in_a_week = Transaksi::where('created_at', '>=', $AgoDate);
 
         $total_transaksi = $in_a_week->count();
@@ -33,7 +34,7 @@ class RouteController extends Controller
         $total_menu = Menu::all()->count();
 
         $today = now()->format('yy-mm-dd');
-        $AgoDate= now()->subWeek()->format('Y-m-d');
+        $AgoDate = now()->subWeek()->format('Y-m-d');
         $in_a_week = Transaksi::where('created_at', '>=', $AgoDate);
 
         $total_transaksi = $in_a_week->count();
@@ -46,7 +47,7 @@ class RouteController extends Controller
     public function transaksiPelanggan()
     {
         $user_id = Auth::user()->id;
-        
+
         $data_hari_ini = Transaksi::where('user_id', $user_id)->whereDate('created_at', date('Y-m-d'))->get();
 
         $data_keseluruhan = Transaksi::where('user_id', $user_id)->whereDate('created_at', '<', date('Y-m-d'))->get();
