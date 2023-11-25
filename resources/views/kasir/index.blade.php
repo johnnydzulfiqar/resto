@@ -1,28 +1,5 @@
 @extends('layouts.app', ['titlePage' => 'Transaksi', 'activePage' => 'transaksi-kasir'])
 
-@section('breadcrumb')
-  {{-- <nav aria-label="breadcrumb">
-    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="#">Pages</a></li>
-      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="#">Kasir</a></li>
-      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Transaction</li>
-    </ol>
-    <h6 class="font-weight-bolder mb-0">Transaction</h6>
-  </nav>
-  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" style="padding:60px 0px 0px 0px">
-    <div class="row">
-              <p class="text-white text-capitalize ps-3" style="margin-left: 30px color">Stok terjual hari ini </p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            {{-- <a href="{{ url("/bookingadmin/index") }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
-          </div>
-        </div>
-    </div>
-  </div>
-@endsection --}}
-
 @section('content')
   <div class="container-fluid py-4">
     <div class="row">

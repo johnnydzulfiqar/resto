@@ -59,12 +59,12 @@
                     </div>
                     <div class="text-end pt-1">
                       <p class="text-sm mb-0 text-capitalize">Transaksi's Book</p>
-                      <h4 class="mb-0 text-xl">Rp. {{ number_format($income, 2, ',', '.') }} <span class="text-md">in a week</span></h4>
+                      <h4 class="mb-0 text-xl">Rp. {{ number_format($income, 2, ',', '.') }} <span class="text-md">in a day</span></h4>
                     </div>
                   </div>
                   <hr class="dark horizontal my-0">
                   <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">{{ $total_transaksi }} </span>transaction's in last week</p>
+                    <p class="mb-0"><span class="text-success text-sm font-weight-bolder">{{ $total_transaksi }} </span>transaction's in last day</p>
                   </div>
                 </div>
               </a>
