@@ -57,7 +57,7 @@ class RouteController extends Controller
 
         $income = $in_a_week->sum('total_harga');
         $total_aset = Menu::all()->sum('ketersediaan') * Menu::all()->sum('harga');
-        $total_terjual = Transaksi::all()->sum('jumlah') * Transaksi::all()->sum('total_harga');
+        $total_terjual = Transaksi::all()->sum('total_harga');
 
         return view('kasir.dashboard', compact('menus', 'total_menu', 'total_transaksi', 'income', 'stok', 'stok_terjual', 'total_aset', 'total_terjual'));
     }
