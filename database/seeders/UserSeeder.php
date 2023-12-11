@@ -26,8 +26,8 @@ class UserSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'pedagang',
-                'username' => 'pedagang',
+                'name' => 'konsinyasi',
+                'username' => 'konsinyasi',
                 'password' => bcrypt('12345'),
                 'pass' => '12345',
                 'role' => 'kasir',

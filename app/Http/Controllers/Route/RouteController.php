@@ -43,6 +43,24 @@ class RouteController extends Controller
 
         return view('manajer.dashboard', compact('menus', 'total_menu', 'total_transaksi', 'income'));
     }
+    public function kasirDashboard()
+    {
+        $menus = Menu::get('ketersediaan');
+        $total_menu = Menu::all()->count();
+        $stok = Menu::all()->sum('ketersediaan');
+        $stok_terjual = Transaksi::all()->sum('jumlah');
+        $today = now()->format('yy-mm-dd');
+        $AgoDate = now()->subWeek()->format('Y-m-d');
+        $in_a_week = Transaksi::where('created_at', '>=', $AgoDate);
+
+        $total_transaksi = $in_a_week->count();
+
+        $income = $in_a_week->sum('total_harga');
+        $total_aset = Menu::all()->sum('ketersediaan') * Menu::all()->sum('harga');
+        $total_terjual = Transaksi::all()->sum('jumlah') * Transaksi::all()->sum('total_harga');
+
+        return view('kasir.dashboard', compact('menus', 'total_menu', 'total_transaksi', 'income', 'stok', 'stok_terjual', 'total_aset', 'total_terjual'));
+    }
 
     public function transaksiPelanggan()
     {

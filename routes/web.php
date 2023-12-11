@@ -27,25 +27,26 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::name('pelanggan.')->middleware('customer')->group(function() {
+Route::name('pelanggan.')->middleware('customer')->group(function () {
     Route::resource('menu', MenuController::class)->only(['index', 'show']);
-    Route::middleware('auth')->group(function() {
+    Route::middleware('auth')->group(function () {
         Route::get('create/menu/{menu}', [BuyMenuController::class, 'create'])->name('buy-menu');
         Route::post('store/menu/', [BuyMenuController::class, 'store'])->name('store-menu');
         Route::get('transaksi', [RouteController::class, 'transaksiPelanggan'])->name('transaksi.index');
     });
 });
 
-Route::middleware('auth')->group(function() {
-    Route::name('admin.')->prefix('admin')->middleware('admin')->group(function() {
+Route::middleware('auth')->group(function () {
+    Route::name('admin.')->prefix('admin')->middleware('admin')->group(function () {
         Route::resource('registration', UserController::class);
     });
-    
-    Route::name('kasir.')->prefix('kasir')->middleware('kasir')->group(function() {
+
+    Route::name('kasir.')->prefix('kasir')->middleware('kasir')->group(function () {
         Route::resource('transaction', TransaksiController::class);
+        Route::get('/dashboard', [RouteController::class, 'kasirDashboard'])->name('dashboard');
     });
-    
-    Route::name('manajer.')->prefix('manajer')->middleware('manajer')->group(function() {
+
+    Route::name('manajer.')->prefix('manajer')->middleware('manajer')->group(function () {
         Route::get('/dashboard', [RouteController::class, 'manajerDashboard'])->name('dashboard');
         Route::resource('menu', MenuController::class);
         Route::post('/filter/laporan', FilterDateController::class)->name('filter-laporan');
