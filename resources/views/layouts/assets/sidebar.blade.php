@@ -23,14 +23,17 @@
       @endadmin
 
       @kasir
-        <li class="nav-item">
-          <a class="nav-link text-white {{ $activePage == 'transaksi-kasir' ? 'active bg-gradient-primary' : '' }}" href="{{ route('kasir.dashboard') }}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
-        </li>
+      @if ( auth()->user()->username == 'konsinyasi') 
+      <li class="nav-item">
+        <a class="nav-link text-white {{ $activePage == 'transaksi-kasir' ? 'active bg-gradient-primary' : '' }}" href="{{ route('kasir.dashboard') }}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">dashboard</i>
+          </div>
+          <span class="nav-link-text ms-1">Dashboard</span>
+        </a>
+      </li>
+      @endif
+        
           <li class="nav-item">
           <a class="nav-link text-white {{ $activePage == 'transaksi-kasir' ? 'active bg-gradient-primary' : '' }}" href="{{ route('kasir.transaction.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
