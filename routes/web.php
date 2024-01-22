@@ -28,7 +28,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::name('pelanggan.')->middleware('customer')->group(function () {
-    Route::resource('menu', MenuController::class)->only(['index', 'show']);
+    Route::resource('menu', MenuController::class)->only(['index', 'show', 'pembayaraan']);
+    Route::get('pembayaraan', [MenuController::class, 'pembayaraan'])->name('pembayaraan');
     Route::middleware('auth')->group(function () {
         Route::get('create/menu/{menu}', [BuyMenuController::class, 'create'])->name('buy-menu');
         Route::post('store/menu/', [BuyMenuController::class, 'store'])->name('store-menu');
