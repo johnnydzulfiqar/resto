@@ -124,7 +124,7 @@
                                 });</script>
                             <script type="text/javascript">
                                 document.getElementById("button").onclick = function () {
-                                    location.href = "http://localhost:8000/transaksi";
+                                    location.href = "https://du68market.my.id/public/transaksi";
                                 };
                             </script>
                                 </body>
