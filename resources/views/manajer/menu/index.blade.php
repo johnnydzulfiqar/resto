@@ -102,7 +102,7 @@
     async function deleteModal(menu) {
       $("#delete-modal").modal('show')
       $("#this-content").html(`Menu <b class="text-capitalize">${menu}</b>, for Real`)
-      $("#deleteData").attr('action', `/manajer/menu/${menu}`)
+      $("#deleteData").attr('action', `https://du68market.my.id/public/manajer/menu/${menu}`)
     }
   </script>
 @endpush
