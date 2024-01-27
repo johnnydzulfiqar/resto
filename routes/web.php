@@ -4,6 +4,7 @@ use App\Http\Controllers\BuyMenuController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MenukasirController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransaksiController;
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
 
     Route::name('kasir.')->prefix('kasir')->middleware('kasir')->group(function () {
         Route::resource('transaction', TransaksiController::class);
+        Route::resource('menu', MenukasirController::class);
         Route::get('/dashboard', [RouteController::class, 'kasirDashboard'])->name('dashboard');
     });
 

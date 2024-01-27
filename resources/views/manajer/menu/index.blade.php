@@ -23,7 +23,12 @@
           </div>
           <div class="card-body px-0 pb-2">
             <div class="text-end px-4">
+              @if ( auth()->user()->role == 'manajer')   
               <a href="{{ route('manajer.menu.create') }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">Create</button></a>
+              @endif
+              @if ( auth()->user()->role == 'kasir')   
+              <a href="{{ route('kasir.menu.create') }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">Create</button></a>
+              @endif
             </div>
             <div class="table-responsive p-0">
               <table class="table align-items-center mb-0">
@@ -71,7 +76,12 @@
                             <p class="text-xl text-secondary mb-0">{{ $menu->updated_at->diffForHumans() }}</p>
                         </td>
                         <td class="align-middle text-center">
+                          @if ( auth()->user()->role == 'manajer')
                           <a href="{{ route('manajer.menu.edit', $menu->nama_menu) }}" class="text-warning font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Menu">
+                          @endif
+                          @if ( auth()->user()->role == 'kasir')
+                          <a href="{{ route('kasir.menu.edit', $menu->nama_menu) }}" class="text-warning font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Menu">
+                          @endif
                             Edit
                           </a>
                           |
@@ -96,7 +106,7 @@
 
   @include('_partials.delete')
 @endsection
-
+@if ( auth()->user()->role == 'manajer')
 @push('js')
   <script>
     async function deleteModal(menu) {
@@ -105,4 +115,15 @@
       $("#deleteData").attr('action', `https://du68market.my.id/public/manajer/menu/${menu}`)
     }
   </script>
+@endif
+@if ( auth()->user()->role == 'kasir')
+@push('js')
+  <script>
+    async function deleteModal(menu) {
+      $("#delete-modal").modal('show')
+      $("#this-content").html(`Menu <b class="text-capitalize">${menu}</b>, for Real`)
+      $("#deleteData").attr('action', `https://du68market.my.id/public/kasir/menu/${menu}`)
+    }
+  </script>
+@endif
 @endpush

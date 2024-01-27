@@ -24,9 +24,9 @@ return new class extends Migration
             $table->unsignedBigInteger('pegawai_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('menu_id')->references('id')->on('menus');
-            $table->foreign('pegawai_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->foreign('pegawai_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

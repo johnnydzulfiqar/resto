@@ -24,7 +24,12 @@
           </div>
           <div class="card-body px-4 pb-2">
             @include('_partials.alert-error')
+            @if ( auth()->user()->role == 'manajer')   
             <form class="form" action="{{ route('manajer.menu.store') }}" enctype="multipart/form-data" method="post">
+            @endif
+            @if ( auth()->user()->role == 'kasir')   
+            <form class="form" action="{{ route('kasir.menu.store') }}" enctype="multipart/form-data" method="post">
+            @endif
               @csrf
                 <div class="my-3">
                   <label class="form-label">Nama Menu</label>

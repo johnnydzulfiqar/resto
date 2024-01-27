@@ -8,7 +8,7 @@ use App\Http\Requests\MenuRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class MenuController extends Controller
+class MenukasirController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +21,8 @@ class MenuController extends Controller
             $menus = Menu::all();
             return view('pelanggan.menu.index', compact('menus'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
-        } elseif (Auth::user()->role == 'manajer') {
-            $menus = Menu::latest('updated_at')->where('user_id', '=', 4)->paginate(5);
+        } elseif (Auth::user()->role == 'kasir') {
+            $menus = Menu::latest('updated_at')->where('user_id', '=', 2)->paginate(5);
             return view('manajer.menu.index', compact('menus'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }
@@ -76,7 +76,7 @@ class MenuController extends Controller
             'user_id' => $peg_id,
         ]);
 
-        return redirect()->route('manajer.menu.index')->with('success', 'Menu Baru Telah Berhasil Ditambahkan!');
+        return redirect()->route('kasir.menu.index')->with('success', 'Menu Baru Telah Berhasil Ditambahkan!');
     }
 
     /**
@@ -143,7 +143,7 @@ class MenuController extends Controller
             ]);
         }
 
-        return redirect()->route('manajer.menu.index')->with('success', 'Menu Telah Berhasil Diperbaharui!');
+        return redirect()->route('kasir.menu.index')->with('success', 'Menu Telah Berhasil Diperbaharui!');
     }
 
     /**
@@ -156,6 +156,6 @@ class MenuController extends Controller
     {
         $menu->delete();
 
-        return redirect()->route('manajer.menu.index')->with('success', 'Menu Telah Berhasil Dihapus!');
+        return redirect()->route('kasir.menu.index')->with('success', 'Menu Telah Berhasil Dihapus!');
     }
 }

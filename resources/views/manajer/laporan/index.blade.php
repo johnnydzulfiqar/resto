@@ -83,7 +83,7 @@
                           <p class="text-xl text-secondary mb-0">@isset($data->user_id) {{ $data->pelanggan->username }} @else - @endisset</p>
                         </td>
                         <td> 
-                          <p class="text-xs font-weight-bold mb-0">{{ $data->menu->nama_menu }}</p>
+                          <p class="text-xs font-weight-bold mb-0">{{ $data->menu->nama_menu }}({{ $data->menu->user_id }})</p>
                         </td>
                         <td class="align-middle text-center text-sm">
                           <p class="text-xl text-secondary mb-0">{{ $data->jumlah }}</p>

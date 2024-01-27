@@ -18,15 +18,21 @@ class Menu extends Model
         'foto',
         'kategori',
         'ketersediaan',
+        'pembayaraan',
+        'user_id',
     ];
 
     public function getRouteKeyName()
     {
-      return 'nama_menu';
+        return 'nama_menu';
     }
 
     public function transaksi()
     {
         return $this->hasMany(Transaksi::class);
+    }
+    public function pelanggan()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
