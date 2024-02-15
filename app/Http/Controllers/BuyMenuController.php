@@ -61,6 +61,6 @@ class BuyMenuController extends Controller
             'total_bayar' => $request->total_bayar,
         ]);
         // return view('pelanggan.menu.index');
-        return redirect()->route('pelanggan.menu.index')->with('success', "Pembelian Berhasil!");
+        return redirect()->route('pelanggan.transaksi.index')->with('success', "Pembelian Berhasil!");
     }
 }
