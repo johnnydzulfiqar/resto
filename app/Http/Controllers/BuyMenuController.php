@@ -33,7 +33,7 @@ class BuyMenuController extends Controller
             $menu_id = $transaksi['menu'];
             $jumlah = $transaksi['jumlah'];
             $total_harga = $transaksi['total_harga'];
-
+            $metode = $request->metode;
             Transaksi::create([
                 'transaksi_id' => $transaksi_id,
                 'nama_pelanggan' => $nama_pelanggan,
@@ -41,6 +41,7 @@ class BuyMenuController extends Controller
                 'menu_id' => $menu_id,
                 'jumlah' => $jumlah,
                 'total_harga' => $total_harga,
+                'metode' => $metode,
             ]);
 
             $menu_change = Menu::find($menu_id);
@@ -59,7 +60,7 @@ class BuyMenuController extends Controller
             'user_id' => $user_id,
             'total_bayar' => $request->total_bayar,
         ]);
-        return view('pelanggan.menu.pembayaraan');
-        // return redirect()->route('pelanggan.menu.pembayaraan')->with('success', "Pembelian Berhasil!");
+        // return view('pelanggan.menu.index');
+        return redirect()->route('pelanggan.menu.index')->with('success', "Pembelian Berhasil!");
     }
 }

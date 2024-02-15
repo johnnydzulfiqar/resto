@@ -19,6 +19,7 @@ class Transaksi extends Model
         'jumlah',
         'total_harga',
         'pegawai_id',
+        'metode',
     ];
 
     public function menu()

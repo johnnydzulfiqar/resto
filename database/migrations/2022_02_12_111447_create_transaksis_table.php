@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->integer('total_harga');
             $table->unsignedBigInteger('pegawai_id')->nullable();
+            $table->string('metode')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

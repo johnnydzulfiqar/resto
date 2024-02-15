@@ -1,6 +1,24 @@
 @extends('layouts.customer', ['titlePage' => 'Buy'])
 
 @section('content')
+                                <style>::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #555; 
+                                } body{background: #f5f5f5}.rounded{border-radius: 1rem}.nav-pills .nav-link{color: #555}.nav-pills .nav-link.active{color: balck}input[type="radio"]{margin-right: 5px}.bold{font-weight:bold}
+                                </style>
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
@@ -75,6 +93,93 @@
                       </div>
                     </div>
                   </div>
+                </div>
+                <div>
+                  <div class="container py-5">
+                    <!-- For demo purpose -->
+                    <div class="row mb-4">
+                        <div class="col-lg-8 mx-auto text-center">
+                            <h1 class="display-6">Metode Pembayaraan</h1>
+                        </div>
+                    </div> <!-- End -->
+                    <div class="row">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="card ">
+                                <div class="card-header">
+                                    <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                                        <!-- Credit card form tabs -->
+                                        <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                                            <li class="nav-item" value="1" > <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Gofood </a> 
+                                              <input type="text" name="metode" class="form-control" id="metode" hidden value="Gofood">
+                                            </li>
+                                            <li class="nav-item" value="2"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> QRIS </a> 
+                                              <input type="text" name="metode" class="form-control" id="metode" hidden value="QRIS">
+                                            </li>
+                                            <li class="nav-item" value="3"> <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Transfer </a> 
+                                              <input type="text" name="metode" class="form-control" id="metode" hidden value="Bank">
+                                            </li>
+                                            <li class="nav-item" value="4"> <a data-toggle="pill" href="#tunai" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Tunai </a> 
+                                              <input type="text" name="metode" class="form-control" id="metode" hidden value="Tunai">
+                                            </li>
+                                        </ul>
+                                    </div> <!-- End -->
+                                    <!-- Credit card form content -->
+                                    <div class="tab-content">
+                                        <!-- credit card info-->
+                                        <div id="credit-card" class="tab-pane fade show active pt-3">
+                                            <form role="form" onsubmit="event.preventDefault()">
+                                                    <input type="text" name="metode" class="form-control" id="metode" hidden value="Gofood">
+                                                <div class="form-group"> <label for="username">
+                                                        <h6>No Akun Gofood</h6>
+                                                    </label> <input type="text" name="username" placeholder="No Akun Gofood"  class="form-control "> </div>
+                                                    <div class="form-group"> <label for="cardNumber">
+                                                        <h6>No Verifikasi</h6>
+                                                    </label>
+                                                    <div class="input-group"> <input type="text" name="cardNumber" placeholder="No Verifikasi" class="form-control " >
+                                                        <div class="input-group-append">  </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="card-footer"> 
+                                                  {{-- <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" id="button"> Confirm Payment </button> --}}
+                                            </form>
+                                        </div>
+                                    </div> <!-- End -->
+                                    <!-- Paypal info -->
+                                    <div id="paypal" class="tab-pane fade pt-3">
+                                        <input type="text" name="metode" class="form-control" id="metode" hidden value="QRIS">
+                                        <h6 class="pb-2">Pembayaraan QRIS</h6>
+                                        <img class="card-img-top" src="https://cdn.ttgtmedia.com/rms/misc/qr_code_barcode.jpg" height="350" width="350" alt="Card image cap">
+                                        <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                                    </div> <!-- End -->
+                                    <!-- bank transfer info -->
+                                    <div id="net-banking" class="tab-pane fade pt-3">
+                                      <input type="text" name="metode" class="form-control" id="metode" hidden value="Bank">
+                                        <div class="form-group "> <label for="Select Your Bank">
+                                                <h6>Select your Bank</h6>
+                                            </label> <select class="form-control" id="ccmonth">
+                                                <option value="" selected disabled>--Please select your Bank--</option>
+                                                <option>BCA</option>
+                                                <option>BNI</option>
+                                                <option>Mandiri</option>
+                                            </select> </div>
+                                        <div class="form-group">
+                                            {{-- <p> <button type="button" class="btn btn-primary " id="button"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p> --}}
+                                        </div>
+                                        <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                                    </div> <!-- End -->
+                                    <div id="tunai" class="tab-pane fade pt-3">
+                                      <input type="text" name="metode" class="form-control" id="metode" hidden value="Tunai">
+                                        <div class="form-group">
+                                            {{-- <p> <button type="button" class="btn btn-primary " id="button"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p> --}}
+                                        </div>
+                                        <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                                    </div> <!-- End -->
+                                    <!-- End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row justify-content-end">
                   <div class="col-md-2 col-6">
@@ -209,4 +314,20 @@
         totalBayar()
       });
   </script>
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+    <script type='text/javascript' src='#'></script>
+    <script type='text/javascript' src='#'></script>
+    <script type='text/javascript' src='#'></script>
+    <script type='text/javascript'>$(function() {
+$('[data-toggle="tooltip"]').tooltip()
+})</script>
+    <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+    myLink.addEventListener('click', function(e) {
+      e.preventDefault();
+    });</script>
+{{-- <script type="text/javascript">
+    document.getElementById("button").onclick = function () {
+        location.href = "https://du68market.my.id/public/transaksi";
+    };
+</script> --}}
 @endpush

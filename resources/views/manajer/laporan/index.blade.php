@@ -65,6 +65,8 @@
                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Total</th>
                     <th id="td-nama_pegawai" class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Pegawai</th>
                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7" colspan="2" id="td-created_at">Waktu</th>
+                    <th id="td-user_id" class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Metode</th>
+                  
                   </tr>
                 </thead>
                 <tbody>
@@ -82,8 +84,11 @@
                         <td class="text-center">
                           <p class="text-xl text-secondary mb-0">@isset($data->user_id) {{ $data->pelanggan->username }} @else - @endisset</p>
                         </td>
-                        <td> 
-                          <p class="text-xs font-weight-bold mb-0">{{ $data->menu->nama_menu }}({{ $data->menu->user_id }})</p>
+                        <td> @if ( $data->menu->user_id == 4 )
+                          <p class="text-xs font-weight-bold mb-0">{{ $data->menu->nama_menu }}(Manager)</p>
+                          @else
+                          <p class="text-xs font-weight-bold mb-0">{{ $data->menu->nama_menu }}(Kosinyasi)</p>
+                        @endif
                         </td>
                         <td class="align-middle text-center text-sm">
                           <p class="text-xl text-secondary mb-0">{{ $data->jumlah }}</p>
@@ -99,6 +104,9 @@
                         </td>
                         <td class="align-middle text-center text-sm">
                           <p class="text-xl text-secondary mb-0">{{ $data->created_at->format('H:i') }}</p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <p class="text-xl text-secondary mb-0">{{ $data->metode}}</p>
                         </td>
                       </tr>
                     @endforeach
