@@ -90,7 +90,7 @@
     async function deleteModal(id) {
       $("#delete-modal").modal('show')
       $("#this-content").html(`Following Transaction, for Real`)
-      $("#deleteData").attr('action', `/kasir/transaction/${id}`)
+      $("#deleteData").attr('action', `https://du68market.my.id/public/kasir/transaction/${id}`)
     }
   </script>
 @endpush
