@@ -18,7 +18,7 @@ class LaporanController extends Controller
         $datas = Transaksi::latest('created_at')->paginate(10);
         $filter = null;
         return view('manajer.laporan.index', compact('datas', 'filter'))
-            ->with('i', (request()->input('page', 1) -1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     // public function filter()
@@ -33,7 +33,7 @@ class LaporanController extends Controller
         $datas = Transaksi::all();
 
         $pdf = Pdf::loadview('manajer/laporan/pdf', compact('datas'))->setPaper('a4', 'landscape');
-    	return $pdf->stream();
+        return $pdf->stream();
     }
 
     public function filterCetak(Request $request)
@@ -48,6 +48,12 @@ class LaporanController extends Controller
         }
 
         $pdf = Pdf::loadview('manajer/laporan/pdf-filter', compact('datas', 'from', 'to'))->setPaper('a4', 'landscape');
-    	return $pdf->stream();
+        return $pdf->stream();
+    }
+    public function cetakstruk()
+    {
+        $datas = Transaksi::all();
+        $pdf = Pdf::loadview('kasir/laporan/pdf', compact('datas'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

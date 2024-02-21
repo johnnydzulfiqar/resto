@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TransaksiController extends Controller
 {
@@ -84,9 +85,12 @@ class TransaksiController extends Controller
      * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaksi $transaksi)
+    public function show(Transaksi $transaksi, $id)
     {
-        //
+        $data = Transaksi::find($id);
+        $pdf = Pdf::loadview('kasir.laporan.pdf', compact('data'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
+        // return view('kasir.laporan.pdf', compact('data'));
     }
 
     /**

@@ -19,7 +19,9 @@ class Menu extends Model
         'kategori',
         'ketersediaan',
         'pembayaraan',
+        'supplier',
         'user_id',
+        'penerima',
     ];
 
     public function getRouteKeyName()

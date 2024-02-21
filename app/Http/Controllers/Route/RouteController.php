@@ -7,6 +7,7 @@ use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\RekapTransaksi;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class RouteController extends Controller
@@ -79,5 +80,12 @@ class RouteController extends Controller
         }
 
         return view('pelanggan.transaksi.index', compact('data_hari_ini', 'data_keseluruhan', 'total_bayar'));
+    }
+    public function show(Transaksi $transaksi, $id)
+    {
+        $data = Transaksi::find($id);
+        $pdf = Pdf::loadview('pelanggan.transaksi.pdf', compact('data'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
+        // return view('pelanggan.transaksi.pdf', compact('data'));
     }
 }

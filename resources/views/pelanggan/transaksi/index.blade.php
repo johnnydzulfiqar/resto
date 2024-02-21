@@ -37,6 +37,9 @@
 
                     <p class="text-end"><i>{{ $data->created_at->diffForHumans() }}</i></p>
                   </div>
+                  <div class="text-center px-4">
+                            <a href="{{ route('pelanggan.transaksi.show', $data->id) }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">Struk Pembelian</button></a>
+                  </div>
                 </div>
               </div>
             @empty

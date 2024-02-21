@@ -86,6 +86,14 @@
                     </div>
                     <div class="col-md-1">
                       <div class="my-3">
+                        <label class="form-label">Gambar</label>
+                        <div class="input-group input-group-outline">
+                          <img class="card-img-top" src="{{ asset($menu->foto) }}" style="object-fit: cover;" height="100" width="100" alt="Card image cap" id="image">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <div class="my-3">
                         <label class="form-label">Add Menu</label>
                         <div class="input-group input-group-outline">
                           <button class="btn btn-primary text-md" type="button" onclick="addMenu()" style="border-radius: 100%">+</button>
@@ -313,6 +321,7 @@
         $(`#pesan-${id}-total`).val(total)
         totalBayar()
       });
+      
   </script>
     <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
     <script type='text/javascript' src='#'></script>
@@ -330,4 +339,13 @@ $('[data-toggle="tooltip"]').tooltip()
         location.href = "https://du68market.my.id/public/transaksi";
     };
 </script> --}}
+<script>
+  $(document).on('change', '.image', function() {
+        var menu_id = $(this).attr('data-menu-id');
+        var id = $(this).attr('data-id');
+        document.getElementById('image').src = "{{ asset($menu->foto) }}" + selectedImage;
+        imageChange()
+      });
+  
+</script>
 @endpush

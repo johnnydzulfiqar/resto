@@ -40,6 +40,10 @@
                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Deskripsi</th>
                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kategori</th>
                     <th class="text-center text-uppercase text-secondary text-wrap text-xs font-weight-bolder opacity-7">Ketersediaan</th>
+                    @if ( auth()->user()->role == 'kasir') 
+                    <th class="text-center text-uppercase text-secondary text-wrap text-xs font-weight-bolder opacity-7">Supplier</th>
+                    <th class="text-center text-uppercase text-secondary text-wrap text-xs font-weight-bolder opacity-7">Penerima</th>
+                    @endif
                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Terakhir di Ubah</th>
                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Aksi</th>
                   </tr>
@@ -72,6 +76,15 @@
                         <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-info">{{ $menu->ketersediaan }}</span>
                         </td>
+                        @if ( auth()->user()->role == 'kasir')  
+                        <td>
+                          <p class="text-xl text-capitalize text-center text-secondary mb-0">{{ $menu->supplier }}</p>
+                        </td>
+                        <td>
+                          <p class="text-xl text-capitalize text-center text-secondary mb-0">{{ $menu->penerima }}</p>
+                        </td>
+                        @endif
+
                         <td class="align-middle text-center text-sm">
                             <p class="text-xl text-secondary mb-0">{{ $menu->updated_at->diffForHumans() }}</p>
                         </td>

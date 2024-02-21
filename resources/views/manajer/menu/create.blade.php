@@ -106,6 +106,30 @@
                     </div>
                   @enderror
                 </div>
+                @if ( auth()->user()->role == 'kasir') 
+                <div class="my-3">
+                  <label class="form-label">Supplier</label>
+                  <div class="input-group input-group-outline @error('supplier') has-danger @enderror">
+                    <input type="text" placeholder="Nama Supplier" min="0" name="supplier" class="form-control">
+                  </div>
+                  @error('supplier')
+                    <div id="supplier-error" class="error text-danger pl-3" for="supplier" style="display: block;">
+                      <small>{{ $errors->first('supplier') }}</small>
+                    </div>
+                  @enderror
+                </div>
+                <div class="my-3">
+                  <label class="form-label">Penerima</label>
+                  <div class="input-group input-group-outline @error('penerima') has-danger @enderror">
+                    <input type="text" placeholder="Nama penerima" min="0" name="penerima" class="form-control">
+                  </div>
+                  @error('penerima')
+                    <div id="penerima-error" class="error text-danger pl-3" for="penerima" style="display: block;">
+                      <small>{{ $errors->first('penerima') }}</small>
+                    </div>
+                  @enderror
+                </div>
+                @endif
               
               <div class="text-end">
                 <button type="submit" class="text-uppercase btn btn-primary">Save</button>

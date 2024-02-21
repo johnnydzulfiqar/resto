@@ -66,6 +66,9 @@
                           <a href="#" class="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Hapus data" onclick="deleteModal('{{ $data->id }}')">
                             Hapus
                           </a>
+                          <div class="text-end px-4">
+                            <a href="{{ route('kasir.transaction.show', $data->id) }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">Struk</button></a>
+                          </div>
                         </td>
                       </tr>
                     @endforeach

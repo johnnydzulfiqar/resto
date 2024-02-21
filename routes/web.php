@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\FilterDateController;
+use App\Http\Controllers\StrukController;
 use App\Http\Controllers\Route\RouteController;
 
 /*
@@ -35,6 +36,7 @@ Route::name('pelanggan.')->middleware('customer')->group(function () {
         Route::get('create/menu/{menu}', [BuyMenuController::class, 'create'])->name('buy-menu');
         Route::post('store/menu/', [BuyMenuController::class, 'store'])->name('store-menu');
         Route::get('transaksi', [RouteController::class, 'transaksiPelanggan'])->name('transaksi.index');
+        Route::get('transaksi/show/{data}', [RouteController::class, 'show'])->name('transaksi.show');
     });
 });
 

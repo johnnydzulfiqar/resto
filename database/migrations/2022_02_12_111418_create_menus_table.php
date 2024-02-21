@@ -22,6 +22,8 @@ return new class extends Migration
             $table->enum('kategori', ['makanan', 'minuman']);
             $table->integer('ketersediaan');
             $table->string('pembayaraan')->nullable();
+            $table->string('supplier')->nullable();
+            $table->string('penerima')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

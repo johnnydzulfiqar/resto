@@ -65,6 +65,10 @@ class MenukasirController extends Controller
 
         $foto = 'storage/menu/' . $fileName;
         $peg_id = Auth::user()->id;
+        $supplier = $request->supplier;
+        $penerima = $request->penerima;
+
+
 
         Menu::create([
             'nama_menu' => $nama_menu,
@@ -74,6 +78,9 @@ class MenukasirController extends Controller
             'kategori' => $kategori,
             'ketersediaan' => $availability,
             'user_id' => $peg_id,
+            'supplier' => $supplier,
+            'penerima' => $penerima,
+
         ]);
 
         return redirect()->route('kasir.menu.index')->with('success', 'Menu Baru Telah Berhasil Ditambahkan!');
@@ -129,6 +136,7 @@ class MenukasirController extends Controller
             'kategori' => $kategori,
             'ketersediaan' => $availability,
             'user_id' => $peg_id,
+            'supplier' => $peg_id,
 
         ]);
 
