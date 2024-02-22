@@ -33,10 +33,12 @@
             <form class="form" action="{{ route('pelanggan.store-menu') }}" method="post">
               @csrf
                 <input type="hidden" name="nama_pelanggan" value="{{ Auth::user()->name }}">
-
                 <div id="list-menu">
                   <div class="row justify-content-center">
                     <div class="col-md-5">
+                      @foreach ($menus as $menu)
+                        <div class="d-none" id="image-src-{{ $menu->id }}" data-src="{{ asset($menu->foto) }}"></div>
+                      @endforeach
                       <div class="my-3">
                         <label class="form-label">Menu</label>
                         <div class="form-group input-group input-group-outline @error('pesan[0][menu]') has-danger @enderror">
@@ -88,7 +90,7 @@
                       <div class="my-3">
                         <label class="form-label">Gambar</label>
                         <div class="input-group input-group-outline">
-                          <img class="card-img-top" src="{{ asset($menu->foto) }}" style="object-fit: cover;" height="100" width="100" alt="Card image cap" id="image">
+                          <img class="card-img-top" id="pesan-0-gambar" src="{{ asset($menu->foto) }}" style="object-fit: cover;" height="100" width="100" alt="Card image cap">
                         </div>
                       </div>
                     </div>
@@ -269,6 +271,14 @@
                     </div>
                     <div class="col-md-1">
                       <div class="my-3">
+                        <label class="form-label">Gambar</label>
+                        <div class="input-group input-group-outline">
+                          <img class="card-img-top" id="pesan-0-gambar" src="{{ asset($menu->foto) }}" style="object-fit: cover;" height="100" width="100" alt="Card image cap">
+                        </div>
+                      </div>
+                    </div>sp
+                    <div class="col-md-1">
+                      <div class="my-3">
                         <label class="form-label">Remove</label>
                         <div class="input-group input-group-outline">
                           <button class="btn btn-primary text-md remove-trans" type="button" data-id="${i}" style="border-radius: 100%">-</button>
@@ -308,6 +318,11 @@
         var total = harga * jumlah
         var total_harga = (total/1000).toFixed(3)
         $(`#pesan-${id}-total`).val(total)
+        
+        const imageSrc = $(`#image-src-${$(this).val()}`)
+        if(imageSrc.length) {
+          $(`#pesan-${id}-gambar`).attr('src', imageSrc.data('src'))
+        }
         totalBayar()
       });
 
