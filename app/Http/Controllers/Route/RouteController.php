@@ -48,7 +48,7 @@ class RouteController extends Controller
     {
         $menus = Menu::get('ketersediaan');
         $total_menu = Menu::all()->count();
-        $stok = Menu::all()->sum('ketersediaan');
+        $stok = Menu::where('user_id', '=', 2)->sum('ketersediaan');
         $stok_terjual = Transaksi::all()->sum('jumlah');
         $today = now()->format('yy-mm-dd');
         $AgoDate = now()->subWeek()->format('Y-m-d');

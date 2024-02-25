@@ -7,6 +7,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenukasirController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\LaporanKasirController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\FilterDateController;
 use App\Http\Controllers\StrukController;
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('transaction', TransaksiController::class);
         Route::resource('menu', MenukasirController::class);
         Route::get('/dashboard', [RouteController::class, 'kasirDashboard'])->name('dashboard');
+        Route::get('/laporan', [LaporanKasirController::class, 'index'])->name('laporan');
+        Route::get('/laporan/cetak', [LaporanKasirController::class, 'cetak'])->name('cetak-laporan');
+        Route::post('/laporan/cetak', [LaporanKasirController::class, 'filterCetak'])->name('cetak-laporan-filtering');
     });
 
     Route::name('manajer.')->prefix('manajer')->middleware('manajer')->group(function () {
