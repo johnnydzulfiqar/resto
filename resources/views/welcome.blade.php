@@ -23,7 +23,7 @@
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("http://localhost:8080/viko/resto/public/img/coffee.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("http://localhost:8080/viko/resto/public/img/coffee2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -238,23 +238,23 @@
             <div class="container px-4 px-lg-5">
                 <!-- Featured Menu Row-->
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{{ asset('img') }}/Iced Matcha Latte.jpg" alt="..." /></div>
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{{ asset('img') }}/coffee2.jpg" alt="..." /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <h4>Matcha</h4>
-                            <p class="text-black-50 mb-0">Matcha adalah Teh Hijau yag berasal dari Jepang. Matcha Latte diracik dari teh hijau Jepang dan susu. Minuman ini cocok untuk menjadi pemasok energi di pagi hari, buat kamu yang gak suka Kopi.</p>
+                            <h4>Jus Segar</h4>
+                            <p class="text-black-50 mb-0">Jus atau sari adalah minuman yang terbuat dari ekstraksi atau pemerasan cairan alami yang terkandung dalam buah dan sayuran.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Menu One Row-->
                 <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{{ asset('img') }}/chocolate cake.jpg" alt="..."/></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="{{ asset('img') }}/bakmiebakar.jpg" alt="..."/></div>
                     <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="menu-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">Chocolate Coffee Cake</h4>
-                                    <p class="mb-0 text-white-50">Gak cuman minuman, Our Café juga punya makanan. Kue Coklat Kopi ini dibuat dari bahan dasar kopi dan krim coklat.</p>
+                                    <h4 class="text-white">Bakmie Bakar</h4>
+                                    <p class="mb-0 text-white-50">Sebuah bakmi bakar yang sangat lezat halal dan baik untuk kesehatan.</p>
                                     <hr class="d-none d-lg-block mb-0 ms-0" />
                                 </div>
                             </div>
@@ -263,13 +263,13 @@
                 </div>
                 <!-- Project Two Row-->
                 <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{{ asset('img') }}/americano.jpg" alt="..." /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="{{ asset('img') }}/bakmiimingkatsu.jpg" alt="..." /></div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="menu-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Espresso</h4>
-                                    <p class="mb-0 text-white-50">Kopi Espreso yang dibuat oleh barista terpercaya. Dijamin enak!</p>
+                                    <h4 class="text-white">Bakmi Iming Katsu</h4>
+                                    <p class="mb-0 text-white-50">Sebuah bakmi Iming Katsu yang sangat lezat halal dan baik untuk kesehatan.</p>
                                     <hr class="d-none d-lg-block mb-0 me-0" />
                                 </div>
                             </div>
@@ -278,7 +278,7 @@
                 </div>
                 <!-- Menu One Row-->
                 <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="{{ asset('img') }}/mouse cake.jpg" alt="..." /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="{{ asset('img') }}/bakmibm.jpg" alt="..." /></div>
                     <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
