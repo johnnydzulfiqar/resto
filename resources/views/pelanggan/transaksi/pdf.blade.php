@@ -291,10 +291,13 @@ a {
                                     <td class="content-block">
                                         <table class="invoice">
                                             <tbody><tr>
-                                                <td>Atas Nama : {{ $data->nama_pelanggan }}<br>Invoice #{{ $data->transaksi_id }}
-                                                  <br>{{ $data->created_at->format('M-D-Y') }}
-                                                  <br>Metode Pembayaraan : {{ $data->metode }}
-                                                  <br>Kategori : {{ $data->menu->kategori }}
+                                               
+                                                    
+                                                
+                                                <td>Atas Nama : {{ $data3->nama_pelanggan }}<br>Invoice #{{ $data3->transaksi_id }}
+                                                  <br>{{ $data3->created_at->format('M-D-Y') }}
+                                                  <br>Metode Pembayaraan : {{ $data3->metode }}
+                                                 
                                                 </td>
                                             </tr>
                                             <tr>
@@ -302,7 +305,14 @@ a {
                                                   
                                                     <table class="invoice-items" cellpadding="0" cellspacing="0">
                                                         <tbody><tr>
+                                                            @foreach ($data2 as $data)
+                                                
+                                                
                                                             <td>Nama Menu: {{ $data->menu->nama_menu }}</td>
+                                                 <tr> 
+                                                 Kategori : {{ $data->menu->kategori }}
+
+                                                 </tr>
                                                             {{-- <td class="alignright">Harga satuan: Rp. {{ $data->menu->harga }}</td> --}}
                                                         </tr>
                                                         <tr>
@@ -317,14 +327,17 @@ a {
                                                             <td>Metode Pembayaraan</td>
                                                             <td class="alignright">{{ $data->metode }} </td>
                                                         </tr>
+                                                        @endforeach
+
                                                         <tr class="total">
                                                             <td class="alignright" width="80%">Total</td>
-                                                            <td class="alignright">Rp.{{ number_format($data->total_harga, 0, ',', '.') }}</td>
+                                                            <td class="alignright">Rp.{{ number_format($data4->total_bayar, 0, ',', '.') }}</td>
                                                         </tr>
                                                     </tbody></table>
                                                 </td>
                                             </tr>
                                         </tbody></table>
+                                        
                                     </td>
                                 </tr>
                                 

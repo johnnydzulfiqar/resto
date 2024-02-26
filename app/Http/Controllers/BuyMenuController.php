@@ -34,25 +34,32 @@ class BuyMenuController extends Controller
             $jumlah = $transaksi['jumlah'];
             $total_harga = $transaksi['total_harga'];
             $metode = $request->metode;
-            Transaksi::create([
-                'transaksi_id' => $transaksi_id,
-                'nama_pelanggan' => $nama_pelanggan,
-                'user_id' => $user_id,
-                'menu_id' => $menu_id,
-                'jumlah' => $jumlah,
-                'total_harga' => $total_harga,
-                'metode' => $metode,
-            ]);
-
             $menu_change = Menu::find($menu_id);
 
             $ket_ada = $menu_change->ketersediaan;
+            if ($jumlah > $ket_ada) {
+                return redirect()->route('pelanggan.menu.index')->with('error', "STOK KURANG");
+            } else {
+                Transaksi::create([
+                    'transaksi_id' => $transaksi_id,
+                    'nama_pelanggan' => $nama_pelanggan,
+                    'user_id' => $user_id,
+                    'menu_id' => $menu_id,
+                    'jumlah' => $jumlah,
+                    'total_harga' => $total_harga,
+                    'metode' => $metode,
+                ]);
 
-            $ket_ada_new = $ket_ada - $jumlah;
+                $menu_change = Menu::find($menu_id);
 
-            $menu_change->update([
-                'ketersediaan' => $ket_ada_new
-            ]);
+                $ket_ada = $menu_change->ketersediaan;
+
+                $ket_ada_new = $ket_ada - $jumlah;
+
+                $menu_change->update([
+                    'ketersediaan' => $ket_ada_new
+                ]);
+            };
         }
 
         RekapTransaksi::create([

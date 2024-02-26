@@ -20,7 +20,13 @@
         <div class="card-body">
           <div class="row px-md-4">
             <h4>Pembelian Hari Ini ( @isset($total_bayar) <i>Rp. {{ number_format($total_bayar,2,',','.') }}</i> @else - @endisset )</h4>
-            @forelse ($data_hari_ini as $data)
+            @foreach ($data as $item)
+            <div class="text px-4">
+            List Transaksi :  <a href="{{ route('pelanggan.transaksi.show', $item->transaksi_id) }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">{{ $item->transaksi_id}}</button></a>
+            {{ $item->created_at }}
+          </div>
+            @endforeach
+            {{-- {{-- @forelse ($data_hari_ini as $data)
               <div class="col-md-4">
                 <div class="card m-4">
                 <img class="card-img-top" src="{{ asset($data->menu->foto) }}" style="object-fit: cover;" height="250" alt="Card image cap">
@@ -68,9 +74,9 @@
               </div>
             @empty
                 <h3 class="h5 text-center">Tidak ada Pembelian</h3>
-            @endforelse
+            @endforelse --}}
           </div>
         </div>
       </div>
-    </div>
+    </div> 
 @endsection

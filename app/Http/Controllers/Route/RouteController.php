@@ -66,7 +66,16 @@ class RouteController extends Controller
     public function transaksiPelanggan()
     {
         $user_id = Auth::user()->id;
+        $data = Transaksi::distinct()->get('transaksi_id');
+        // $datacount = Transaksi::distinct()->get('transaksi_id')->count();
+        // // for ($x = 0; $x <= $datacount; $x++) {
+        // //     $data = Transaksi::where('transaksi_id', $dataall)->get();
+        // // };
+        // foreach ($dataall as $count) {
+        //     $data = Transaksi::where('transaksi_id', $count)->get();
+        // };
 
+        // dd($data);
         $data_hari_ini = Transaksi::where('user_id', $user_id)->whereDate('created_at', date('Y-m-d'))->get();
 
         $data_keseluruhan = Transaksi::where('user_id', $user_id)->whereDate('created_at', '<', date('Y-m-d'))->get();
@@ -84,13 +93,15 @@ class RouteController extends Controller
         $total_bayar = $in_a_week->sum('total_harga');
 
 
-        return view('pelanggan.transaksi.index', compact('data_hari_ini', 'data_keseluruhan', 'total_bayar'));
+        return view('pelanggan.transaksi.index', compact('data_hari_ini', 'data_keseluruhan', 'total_bayar', 'data'));
     }
-    public function show(Transaksi $transaksi, $id)
+    public function show(Transaksi $transaksi, RekapTransaksi $rekapTransaksi, $transaksi_id)
     {
-        $data = Transaksi::find($id);
-        $pdf = Pdf::loadview('pelanggan.transaksi.pdf', compact('data'))->setPaper('a4', 'landscape');
-        return $pdf->stream();
-        // return view('pelanggan.transaksi.pdf', compact('data'));
+        $data2 = Transaksi::where('transaksi_id', $transaksi_id)->get();
+        $data3 = Transaksi::where('transaksi_id', $transaksi_id)->first();
+        $data4 = RekapTransaksi::where('transaksi_id', $transaksi_id)->first();
+        // $pdf = Pdf::loadview('pelanggan.transaksi.pdf', compact('data'))->setPaper('a4', 'landscape');
+        // return $pdf->stream();
+        return view('pelanggan.transaksi.pdf', compact('data2', 'data3', 'data4'));
     }
 }

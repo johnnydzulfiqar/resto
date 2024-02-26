@@ -57,26 +57,33 @@ class TransaksiController extends Controller
         $total_harga = $request->total_harga;
         $peg_id = Auth::user()->id;
         $transaksi_id = now()->format("YmdH_" . rand(9999999, 1000000));
-        Transaksi::create([
-            'nama_pelanggan' => $nama_pelanggan,
-            'menu_id' => $menu_id,
-            'jumlah' => $jumlah,
-            'total_harga' => $total_harga,
-            'pegawai_id' => $peg_id,
-            'transaksi_id' => $transaksi_id,
-        ]);
-
         $menu_change = Menu::find($menu_id);
 
         $ket_ada = $menu_change->ketersediaan;
+        if ($jumlah > $ket_ada) {
+            return redirect()->route('pelanggan.menu.index')->with('error', "STOK KURANG");
+        } else {
+            Transaksi::create([
+                'nama_pelanggan' => $nama_pelanggan,
+                'menu_id' => $menu_id,
+                'jumlah' => $jumlah,
+                'total_harga' => $total_harga,
+                'pegawai_id' => $peg_id,
+                'transaksi_id' => $transaksi_id,
+            ]);
 
-        $ket_ada_new = $ket_ada - $jumlah;
+            $menu_change = Menu::find($menu_id);
 
-        $menu_change->update([
-            'ketersediaan' => $ket_ada_new
-        ]);
+            $ket_ada = $menu_change->ketersediaan;
 
-        return redirect()->route('kasir.transaction.index')->with('success', 'Transaksi Baru Telah Berhasil Ditambahkan!');
+            $ket_ada_new = $ket_ada - $jumlah;
+
+            $menu_change->update([
+                'ketersediaan' => $ket_ada_new
+            ]);
+
+            return redirect()->route('kasir.transaction.index')->with('success', 'Transaksi Baru Telah Berhasil Ditambahkan!');
+        };
     }
 
     /**
