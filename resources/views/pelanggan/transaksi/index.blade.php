@@ -19,10 +19,10 @@
         <!-- /.card-header -->
         <div class="card-body">
           <div class="row px-md-4">
-            <h4>Pembelian Hari Ini ( @isset($total_bayar) <i>Rp. {{ number_format($total_bayar,2,',','.') }}</i> @else - @endisset )</h4>
+            {{-- <h4>Pembelian Hari Ini ( @isset($total_bayar) <i>Rp. {{ number_format($total_bayar,2,',','.') }}</i> @else - @endisset )</h4> --}}
             @foreach ($data as $item)
             <div class="text px-4">
-            List Transaksi :  <a href="{{ route('pelanggan.transaksi.show', $item->transaksi_id) }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">{{ $item->transaksi_id}}</button></a>
+            History Transaksi :  <a href="{{ route('pelanggan.transaksi.show', $item->transaksi_id) }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">{{ $item->transaksi_id}}</button></a>
             {{ $item->created_at }}
           </div>
             @endforeach
