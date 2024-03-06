@@ -216,7 +216,7 @@
 @push('js')
     <script>
       $(function() {
-
+        
       })
 
       var i = 0;
@@ -276,7 +276,7 @@
                       <div class="my-3">
                         <label class="form-label">Gambar</label>
                         <div class="input-group input-group-outline">
-                          <img class="card-img-top" id="pesan-0-gambar" src="{{ asset($menu->foto) }}" style="object-fit: cover;" height="100" width="100" alt="Card image cap">
+                          <img class="card-img-top" id="pesan-${i}-gambar" src="{{ asset($menu->foto) }}" style="object-fit: cover;" height="100" width="100" alt="Card image cap">
                         </div>
                       </div>
                     </div>
