@@ -66,7 +66,10 @@ class RouteController extends Controller
     public function transaksiPelanggan()
     {
         $user_id = Auth::user()->id;
-        $data = Transaksi::distinct()->get('transaksi_id');
+        $data = Transaksi::distinct()
+            ->select(array('transaksi_id', 'created_at'))
+            ->get();
+
         // $datacount = Transaksi::distinct()->get('transaksi_id')->count();
         // // for ($x = 0; $x <= $datacount; $x++) {
         // //     $data = Transaksi::where('transaksi_id', $dataall)->get();
@@ -91,7 +94,6 @@ class RouteController extends Controller
         $total_transaksi = $in_a_week->count();
 
         $total_bayar = $in_a_week->sum('total_harga');
-
 
         return view('pelanggan.transaksi.index', compact('data_hari_ini', 'data_keseluruhan', 'total_bayar', 'data'));
     }

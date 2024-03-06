@@ -22,8 +22,7 @@
             {{-- <h4>Pembelian Hari Ini ( @isset($total_bayar) <i>Rp. {{ number_format($total_bayar,2,',','.') }}</i> @else - @endisset )</h4> --}}
             @foreach ($data as $item)
             <div class="text px-4">
-            History Transaksi :  <a href="{{ route('pelanggan.transaksi.show', $item->transaksi_id) }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">{{ $item->transaksi_id}}</button></a>
-            {{ $item->created_at }}
+            History Transaksi Tanggal {{ $item->created_at->format('M-D-Y') }}:  <a href="{{ route('pelanggan.transaksi.show', $item->transaksi_id) }}"><button type="button" class="text-uppercase btn btn-sm btn-primary">{{ $item->transaksi_id}}</button></a>
           </div>
             @endforeach
             {{-- {{-- @forelse ($data_hari_ini as $data)

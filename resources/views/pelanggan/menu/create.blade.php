@@ -226,6 +226,9 @@
         $('#list-menu').append(`
                   <div class="row justify-content-center menu" id="list-trans-${i}">
                     <div class="col-md-5">
+                      @foreach ($menus as $menu)
+                        <div class="d-none" id="image-src-{{ $menu->id }}" data-src="{{ asset($menu->foto) }}"></div>
+                      @endforeach
                       <div class="my-3">
                         <label class="form-label">Menu</label>
                         <div class="form-group input-group input-group-outline @error('pesan[${i}][menu]') has-danger @enderror">
@@ -276,7 +279,7 @@
                           <img class="card-img-top" id="pesan-0-gambar" src="{{ asset($menu->foto) }}" style="object-fit: cover;" height="100" width="100" alt="Card image cap">
                         </div>
                       </div>
-                    </div>sp
+                    </div>
                     <div class="col-md-1">
                       <div class="my-3">
                         <label class="form-label">Remove</label>
