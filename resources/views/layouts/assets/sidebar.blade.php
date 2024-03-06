@@ -23,7 +23,7 @@
       @endadmin
 
       @kasir
-      @if ( auth()->user()->username == 'konsinyasi') 
+      {{-- @if ( auth()->user()->username == 'konsinyasi') 
       <li class="nav-item">
         <a class="nav-link text-white {{ $activePage == 'transaksi-kasir' ? 'active bg-gradient-primary' : '' }}" href="{{ route('kasir.dashboard') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -33,7 +33,7 @@
         </a>
       </li>
       @endif
-        
+         --}}
           <li class="nav-item">
         @if ( auth()->user()->username == 'kasir') 
           <a class="nav-link text-white {{ $activePage == 'transaksi-kasir' ? 'active bg-gradient-primary' : '' }}" href="{{ route('kasir.transaction.index') }}">
