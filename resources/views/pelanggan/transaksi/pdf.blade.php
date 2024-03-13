@@ -310,7 +310,7 @@ a {
                                                 
                                                             <td>Nama Menu: {{ $data->menu->nama_menu }}</td>
                                                  <tr> 
-                                                 Kategori : {{ $data->menu->kategori }}
+                                                 Kategori : {{ $data->menu->kategori }}</br>
 
                                                  </tr>
                                                             {{-- <td class="alignright">Harga satuan: Rp. {{ $data->menu->harga }}</td> --}}
